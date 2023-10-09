@@ -1,0 +1,8 @@
+ALL CARDS = YGOprodeck
+
+UI stuff
+
+Rank Star = https://commons.wikimedia.org/wiki/File:Rank_Star.svg
+
+Level Star = https://commons.wikimedia.org/wiki/File:Starball_Red.svg
+

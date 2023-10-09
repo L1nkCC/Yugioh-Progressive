@@ -1,0 +1,67 @@
+Name: PHA_Documentation
+Author: Connor Leslie
+Files: PHA_Button.cs, PHA_Handler.cs
+---------------------------------------------------------
+PHA_Button : UnityEngine.UI.Button, Utilities.Instance.IEnumeratedInstance<PHA_Button,PHA_Option>
+
+static PHA_Handler
+
+Enum PHA_Option
+---------------------------------------------------------
+These classes together handle the use of the Phase buttons in the play scene. The Button class is
+added directly onto the Gameobject and limits the number of options by the Enumeration PHA_Option
+declared in PHA_Handler.
+
+
+PHA_Button
+	
+	Public
+	
+		Fields
+			type : the type of PHA_Option the button is, This should be altered in the inspector
+		Properties
+			EnumeratedInstanceType : return type. This allows for IEnumeratedInstance.SetInstance
+
+
+	Private
+			
+	Functions
+			Awake()
+				Assures only one instance of each PHA_Option option with IEnumeratedInstance.SetInstance()
+				Subscribe the Button Actions defined in PHA_Handler
+				Intialize with a default selection selected
+			OnDeselct
+				Override to empty so selection does not clear on any selection. ie: a button is pressed 
+					that is not a PHA_Button
+			OnSelect
+				Deselect the last selected PHA_Button 
+				Set this as the last selected PHA_Button
+
+
+
+PHA_Handler
+
+
+	Public
+	
+		Fields
+			DEFAULT_OPTION : The option that is selected immediately from the start
+			PHA_Current : The option currently selected by the players, Should only be accessed by PHA_Button
+		Properties
+			InBattlePhase : Returns if PHA_Current is the battle phase
+		Functions
+			PHA_Click
+				return the action associated with the PHA_Option passed. Allow access to private PHA_Actions
+
+
+	Private
+	
+		Fields
+			PHA_Actions : Array parallel to PHA_Option Enum that contains an action associated with each button
+		Functions
+			_options : This is a set of functions that are assigned to PHA_Actions. Not immplemented, Just in case
+				additional functionality would be added to switching phases
+			
+
+PHA_Options
+	This enum is integer based starting at 0. It defines all options for phases in the game
